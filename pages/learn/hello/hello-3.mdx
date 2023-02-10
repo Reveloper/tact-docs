@@ -51,7 +51,7 @@ Note, that Tact language consists of some unusual for classic program language e
 | Trait    | Struct similar to Contract, but serves as extension for Contract(it's similar to interfaces or inheritance for Classes in classic Object‑oriented PL). |
 | Address  | Smart contract address in according TON standards. You'll see this parameter as sender or destination of messages.                                     |
 
-Read more on the [Tact type system](../../guides/types) page.
+Read more on the [Tact type system](/guides/types) page.
 
 #### Define Structure
 Next step, we need to specify our message `Add`, that will force contract do actions according to 4th feature.
@@ -77,7 +77,7 @@ contract SampleTactContract with Deployable {
 
 ```
 
-As said before `Address` defined in the Tact [Type system](../../../ton-docs/ton-docs/docs/develop/tact/docs/tact-types.md) that describes smart-contract's language. General information about Address in TON placed [here](../../../ton-docs/ton-docs/docs/learn/overviews/addresses.md).
+As said before `Address` defined in the [Tact Type system](/guides/types) that describes smart-contract's language. General information about Address in TON placed [here](https://ton.org/docs/learn/overviews/addresses).
 * `owner` - is Address of owner set in for `SampleTactContract`, and we will use it for double check if message sent by owner or not.
 * `counter` - integer number stored in contract that keep current value of iteration results.
 
