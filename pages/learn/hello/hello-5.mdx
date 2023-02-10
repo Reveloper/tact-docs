@@ -39,7 +39,7 @@ Before deployment, according to said before we need to prepare Ton wallet contra
 4. Get address from your wallet and input it in deployment script - `contract.deploy.ts`. 
 For me, it was `kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf`:
 
-```tact"
+```ts filename="contract.deploy.ts" /kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf/
 //previous code
 // Parameters
 let owner = Address.parse('kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf'); // Replace owner with your address
@@ -47,7 +47,7 @@ let owner = Address.parse('kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf'); /
 
 5. Run `contract.deploy.ts` script to get deployment link in terminal with following command in terminal:
 
-```bash
+```bash copy
 yarn deploy
 ```
 It will ask from you wallet you want use, choose what you used before(Tonkeeper/Sandbox).
