@@ -1,12 +1,16 @@
+import { Callout } from 'nextra-theme-docs'
+
 # Jetton contract
 ## Jetton deployment
-> Did you notice something unclear, incorrect or get stuck with some issue in guide? Please ask a question in the Telegram [chat](https://t.me/tondev_eng) or text me directly [@iftryalexg](https://t.me/iftryalexg). Guide will be updated ASAP and all unclear points will be clarified 🚒💦🔥.
+<Callout type="warning">
+Did you notice something unclear, incorrect or get stuck with some issue in guide? Please ask a question in the Telegram [chat](https://t.me/tondev_eng) or text me directly [@iftryalexg](https://t.me/iftryalexg). Guide will be updated ASAP and all unclear points will be clarified 🚒💦🔥.
+</Callout>
 
 ### Jetton tact demo project
 
 Take example of project from GitHub:
 
-```bash
+```bash copy
 git clone https://github.com/ton-community/tact-jetton
 cd tact-jetton
 ```
@@ -17,7 +21,7 @@ Minter, usually used before Token become using by users, to distribute to all ow
 Look briefly to our contract:
 
 
-```tact
+```tact filename="sources/jetton.tact" copy
 import "@stdlib/jetton";
 
 message Mint {
@@ -66,7 +70,7 @@ In this case - [transfer](https://github.com/ton-core/tact/blob/main/stdlib/libs
 
 From [jetton/wallet.tact](https://github.com/ton-core/tact/blob/main/stdlib/libs/jetton/wallet.tact#L38), we can see, that it will create initial data for new jetton wallet contract:
 
-```tact
+```tact filename="wallet.tact"
 //previous code
 
        let init: StateInit = initOf JettonDefaultWallet(self.master, msg.destination);
@@ -101,21 +105,21 @@ To display all data clear, application should read each element of process with 
 
 This project has ready-made example of script for deploying jetton in testnet. Specify following things: 
 
-* Input your deployment Testnet wallet seed in `tact-wallet/sources/jetton.deploy.ts`:
-```ts
+* Input your deployment Testnet wallet seed in `tact-jetton/sources/jetton.deploy.ts`:
+```ts filename="sources/jetton.deploy.ts"
   // Insert your test wallet's 24 words, make sure you have some test Toncoins on its balance. Every deployment spent 0.5 test toncoin.
   let mnemonics = "multiply voice predict admit hockey fringe flat bike napkin child quote piano";
 ```
 
 * Input owner address at same `jetton.deploy.ts`:
-```ts
+```ts filename="sources/jetton.deploy.ts"
   // Owner should usually be the deploying wallet's address.
   let owner = Address.parse('kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2V...');
 ```
 * Note, that in deployment script using walletV4. If you want use your V3R2, you need change wallet contract here.
 
 * Run deployment script
-```bash
+```bash copy
   yarn deploy
 ```
 

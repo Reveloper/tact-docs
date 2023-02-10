@@ -1,20 +1,26 @@
+import { Callout } from 'nextra-theme-docs'
+
 #  Jetton contract
 
 ## Digital token issue
 
-> Did you notice something unclear, incorrect or get stuck with some issue in guide? Please ask a question in the Telegram [chat](https://t.me/tondev_eng) or text me directly [@iftryalexg](https://t.me/iftryalexg). Guide will be updated ASAP and all unclear points will be clarified 🚒💦🔥.
+<Callout type="warning">
+Did you notice something unclear, incorrect or get stuck with some issue in guide? Please ask a question in the Telegram [chat](https://t.me/tondev_eng) or text me directly [@iftryalexg](https://t.me/iftryalexg). Guide will be updated ASAP and all unclear points will be clarified 🚒💦🔥.
+</Callout>
 
 ### Jetton is a part of TON
 
 Jettons is implementation fungible tokens on the TON Blockchain. Fungible Tokens means that they have a property that makes each Token be exactly the same (in type and value) as another Token. From the side of users - it's digital tool in blockchain, that allow to organize business process of distribution and keeping funds with zero trust functions in transaction.
 In TON Blockchain Jettons declared according to [Jetton standard](https://github.com/ton-blockchain/TEPs/blob/master/text/0074-jettons-standard.md). This standard already fully successfully
-implemented with FunC language and support in libraries in various languages. Some of them, you can find and research [here](docs/develop/dapps/defi/tokens).
+implemented with FunC language and support in libraries in various languages. Some of them, you can find and research [here](https://ton.org/docs/develop/dapps/defi/tokens).
 
 The scope of this article are:
 * Remind how Fungible Tokens works in TON blockchain.
 * Research how jetton standard could be implemented in the Tact language.
 
-> ⚠️ Note, that `jetton.tact` is used for learning goals and was not thoroughly tested.
+<Callout type="warning">
+Note, that `jetton.tact` is used for learning goals and was not thoroughly tested.
+</Callout>
 
 ### Jetton as example of designing architecture
 

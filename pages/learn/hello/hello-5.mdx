@@ -1,3 +1,5 @@
+import { Callout } from 'nextra-theme-docs'
+
 # Tact Hello World
 
 ## Contract deployment
@@ -15,7 +17,9 @@ Now we on finale stage. We need to deploy our contract to Blockchain. To do this
 
 ![Tact deploy](public/tact-hello-world/tact-hello-world-6.png)
 
-> Note, this design of deployment used just for clearness. Deploying via Wallet App, Working with public API convenient for learning purposes and a bad way for real products.
+<Callout type="warning">
+Note, this design of deployment used just for clearness. Deploying via Wallet App, Working with public API convenient for learning purposes and a bad way for real products.
+</Callout>
 
 
 ### Tactical Practice #5
@@ -35,7 +39,7 @@ Before deployment, according to said before we need to prepare Ton wallet contra
 4. Get address from your wallet and input it in deployment script - `contract.deploy.ts`. 
 For me, it was `kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf`:
 
-```tact"
+```ts filename="contract.deploy.ts" /kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf/
 //previous code
 // Parameters
 let owner = Address.parse('kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf'); // Replace owner with your address
@@ -43,7 +47,7 @@ let owner = Address.parse('kQDND6yHEzKB82ZGRn58aY9Tt_69Ie_uz73e2VuuJ3fVVcxf'); /
 
 5. Run `contract.deploy.ts` script to get deployment link in terminal with following command in terminal:
 
-```bash
+```bash copy
 yarn deploy
 ```
 It will ask from you wallet you want use, choose what you used before(Tonkeeper/Sandbox).
@@ -52,4 +56,6 @@ It will ask from you wallet you want use, choose what you used before(Tonkeeper/
 
 ![deployment-1](public/tact-hello-world/tact-deployment-process-2.png)
 
->If you faced some compile issue and can't figure out what is wrong, just compare with target contract placed in `sources/example/increment.tact` or [here](https://github.com/ton-community/tact-guide-template/blob/main/sources/example/increment.tact).
+<Callout type="default">
+If you faced some compile issue and can't figure out what is wrong, just compare with target contract placed in `sources/example/increment.tact` or [here](https://github.com/ton-community/tact-guide-template/blob/main/sources/example/increment.tact).
+</Callout>

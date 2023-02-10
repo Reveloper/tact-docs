@@ -37,7 +37,7 @@ Additional restriction for our smart contract - It will check if the person send
 
 Come back to `tact-guide-template` project via IDE(VScode) and begin to write the contract file `contract.tact`. That, our first Tact string is declaring an additional library, where some useful Tact functions are defined.
 
-```tact
+```tact filename="sources/contract.tact" copy
 import "@stdlib/deploy";
 ```
 
@@ -51,33 +51,33 @@ Note, that Tact language consists of some unusual for classic program language e
 | Trait    | Struct similar to Contract, but serves as extension for Contract(it's similar to interfaces or inheritance for Classes in classic Object‑oriented PL). |
 | Address  | Smart contract address in according TON standards. You'll see this parameter as sender or destination of messages.                                     |
 
-Read more on the [Tact type system](../../guides/types) page.
+Read more on the [Tact type system](/guides/types) page.
 
 #### Define Structure
 Next step, we need to specify our message `Add`, that will force contract do actions according to 4th feature.
 Here we specified, that our message should content Integer number of 32-bit length.
 
-```tact
+```tact filename="sources/contract.tact" copy
 //previous code
 message Add{
-  amount: Int as uint32;
+    amount: Int as uint32;
 }
 ```
 
 #### Contract body and fields
 Now we begin declare our contract, we will call it SampleTactContract. Also, we need specify our contract's own properties, that will be stored in its storage: `owner` and `counter`.
 
-```tact
+```tact filename="sources/contract.tact" copy
 //previous code
 
 contract SampleTactContract with Deployable {
 
-  owner: Address;
-  counter: Int as uint32;
+    owner: Address;
+    counter: Int as uint32;
 
 ```
 
-As said before `Address` defined in the Tact [Type system](../../../ton-docs/ton-docs/docs/develop/tact/docs/tact-types.md) that describes smart-contract's language. General information about Address in TON placed [here](../../../ton-docs/ton-docs/docs/learn/overviews/addresses.md).
+As said before `Address` defined in the [Tact Type system](/guides/types) that describes smart-contract's language. General information about Address in TON placed [here](https://ton.org/docs/learn/overviews/addresses).
 * `owner` - is Address of owner set in for `SampleTactContract`, and we will use it for double check if message sent by owner or not.
 * `counter` - integer number stored in contract that keep current value of iteration results.
 
@@ -86,12 +86,12 @@ As said before `Address` defined in the Tact [Type system](../../../ton-docs/ton
 Before we can use contract in Blockchain we should define its initial process. In our case, it means, that we should declare contract's function, that will define our `owner` and `counter` in particular.
 This tool in smart contracts called `init()` function, and we need describe its behaviour next:
 
-```tact
+```tact filename="sources/contract.tact" copy
 //previous code
 
 init(owner: Address) {
-  self.owner = owner;
-  self.counter = 0;
+    self.owner = owner;
+    self.counter = 0;
 }
 ```
 
@@ -99,22 +99,23 @@ Where `self` - special Tact keyword of current level struct, here we using it fo
 * Accept one argument of type `Address`, set this in contract's field `owner`.
 * Initialize `counter` value equal to 0.
 
-```tact
+```tact filename="sources/contract.tact" copy
 //previous code
 
 contract SampleTactContract with Deployable {
 
-  owner: Address;
-  counter: Int as uint32;
+    owner: Address;
+    counter: Int as uint32;
 
-  init(owner: Address) {
-    self.owner = owner;
-    self.counter = 0;
-  }
+    init(owner: Address) {
+        self.owner = owner;
+        self.counter = 0;
+    }
 
-// recievers definition here
+    // recievers definition here
 
-// get functions definition here
+    // get functions definition here
+}
 ```
 
 

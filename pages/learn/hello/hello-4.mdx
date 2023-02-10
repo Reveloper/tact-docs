@@ -1,3 +1,5 @@
+import { Callout } from 'nextra-theme-docs'
+
 # Tact Hello World
 
 ## Receivers and Getters
@@ -22,7 +24,7 @@ Here we will learn more about existing tools in Tact for defining contract's beh
 
 Ok, one more time, we need extend our contract's behaviour
 
-```tact
+```tact filename="sources/contract.tact" copy
 //previous code
 
 fun add(v: Int) {
@@ -40,17 +42,15 @@ Declare function `add` that will do following things:
 3. If this check passed add to current `counter` value `v` and update `counter` value in contract. If required is not pass, throw exception message "Invalid sender".
 
 #### Declare receivers
-```tact
+```tact filename="sources/contract.tact" copy
 //previous code
 
 receive(msg: Add) {
     self.add(msg.amount);
-  }
 }
 
 receive("increment") {
     self.add(1);
-  }
 }
 ```
 Here we are specified two receive functions. This means, that if we get message in contract that correspond of one the receiver contract execute one of them. In other case, contract will do nothing.
@@ -63,23 +63,27 @@ Take a look our receivers:
 #### Declare getter
 
 Last function we need to specifier is get function counter, that will return value of current counter value from contract.
-Now our contract is ready, we need compile this, so run:
 
-```tact
+```tact filename="sources/contract.tact" copy
 
 contract SampleTactContract with Deployable {
     //previous code
 
     get fun counter(): Int {
-      return self.counter;
+        return self.counter;
     }
-
+}
 ```
-Command `yarn build` will compile `contract.tact` and place result in `tact-template/src/output`.
+Now our contract is ready, we need compile this, so run:
 
-```bash
+```bash copy
 yarn build
 ```
 
+Command `yarn build` will compile `contract.tact` and place result in `tact-template/src/output`.
+
 ![Tact compile scheme](public/tact-hello-world/tact-compiler-scheme.png)
->If you faced some compile issue and can't figure out what is wrong, just compare with target contract placed in `sources/example/increment.tact` or [here](https://github.com/ton-community/tact-guide-template/blob/main/sources/example/increment.tact).
+
+<Callout type="default">
+If you faced some compile issue and can't figure out what is wrong, just compare with target contract placed in `sources/example/increment.tact` or [here](https://github.com/ton-community/tact-guide-template/blob/main/sources/example/increment.tact).
+</Callout>

@@ -23,21 +23,19 @@ As we mentioned earlier, contract consists of
 
 For contract wallet we will define struct Transfer as base struct for messages:
 
-```tact
-
+```tact filename="sources/wallet.tact" copy
 struct Transfer {
-seqno: Int as uint32;
-mode: Int as uint8;
-to: Address;
-amount: Int as coins;
-body: Cell?;
+    seqno: Int as uint32;
+    mode: Int as uint8;
+    to: Address;
+    amount: Int as coins;
+    body: Cell?;
 }
 ```
 
 Next will be wallet contract body with all included sections:
 
-```tact
-
+```tact filename="sources/wallet.tact" copy
 contract Wallet {
 
     // contract fields
@@ -49,7 +47,6 @@ contract Wallet {
     // get functions
 
 }
-
 ```
 #### Wallet fields
 Now, let's take a look one by one these section and find out their functions.
@@ -60,8 +57,7 @@ For features of wallet contract we declare following:
 * key - key of owner. Used for checks if transaction asked from wallet owner.
 * walletId - wallet id, serves for supporting different(up to uint64) instance of wallets based on one key. For each `walledId` we deploy unique smart contract with access by same `key`.
 
-```tact
-
+```tact filename="sources/wallet.tact" copy
 contract Wallet {
 
     seqno: Int as uint32 = 0;
@@ -74,7 +70,6 @@ contract Wallet {
     
     // get functions
 }
-
 ```
 
 #### Wallet init
@@ -82,7 +77,7 @@ contract Wallet {
 The `init()` function define first state of our smart contract for deploying process. To deploy our wallet contract we will keep public key and id in its store. Usually, public keypair - public and secret keys computes locally on device which initiate deployment. Secret key stores locally for future signing transaction of owner, and public key sent as argument in `init()` function.
 Wallet ID, according to definition of field allows to create several(up to uin64) wallets based on same keypair.
 
-```tact
+```tact filename="sources/wallet.tact" copy
 contract Wallet {
 
     // contract fields
@@ -109,7 +104,7 @@ Contract receivers define how contract acts depending on what it was received in
 * "duplicate" - receiver declares actions when incoming message contents string comment "duplicate". Here it will increment seqno field.
 * bounced() - special receiver for handling bounced messages.
 
-```tact
+```tact filename="sources/wallet.tact" copy
 contract Wallet {
 
     // contract fields
@@ -149,8 +144,7 @@ contract Wallet {
     
     // get functions
     
-}
-    
+} 
 ```
 
 #### Wallet getters
@@ -161,7 +155,8 @@ Get functions allows to get information about contract's data for free. It's hel
 * get walletId() - returns walletId that was used to initiate this wallet;
 * get seqno() - returns current seqno of wallet
 
-```tact
+```tact filename="sources/wallet.tact" copy
+contract Wallet {
 
     // contract fields
     
@@ -181,5 +176,4 @@ Get functions allows to get information about contract's data for free. It's hel
         return self.seqno;
     }
 }
-
 ```
